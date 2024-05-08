@@ -3,8 +3,8 @@ from sklearn.cluster import KMeans
 from sklearn.decomposition import PCA
 from sklearn.metrics import adjusted_rand_score, adjusted_mutual_info_score, fowlkes_mallows_score, v_measure_score
 
-from spike_cluster_score import purity_score
-from spike_cluster_score import spike_cluster_score
+from scores import purity_score
+from scs import scs_metric
 
 
 def create_table(columns, rows):
@@ -43,7 +43,7 @@ for sim_nr in [1,4,21,22,30]:
                  f"{purity_score(y, kmeans.labels_):.3f}",
                  f"{fowlkes_mallows_score(y, kmeans.labels_):.3f}",
                  f"{v_measure_score(y, kmeans.labels_):.3f}",
-                 f"{spike_cluster_score(y, kmeans.labels_):.3f}",
+                 f"{scs_metric(y, kmeans.labels_):.3f}",
                  ])
 
 create_table(columns, rows)
